@@ -13,27 +13,39 @@
         <h1>WebbShoppen</h1>
 
         <select name="filter" id="filter" class="filter">
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
+
+            <option value="all">All products</option>
+            <option value="men's clothing">Men's clothing</option>
+            <option value="women's clothing">Women's clothing</option>
+            <option value="electronics">Electronics</option>
+            <option value="jewelery">Jewelery</option>
+            
         </select>
 
         <select name="sort" id="sort" class="sort">
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
+
+            <option value="Alph asc-desc">A-Z</option>
+            <option value="Alph desc-asc">Z-A</option>
+            <option value="Price asc-desc">Highest to lowest price</option>
+            <option value="Price desc-asc">Lowest to highest price</option>
+            <option value="Rating asc-desc">Highest to lowest rating</option>
+            <option value="Rating desc-asc">Lowest to highest rating</option>
 
         </select>
 
     </header>
+    <br><br><hr>
 
     <main id="main-content">
-        <h2>Main</h2>
+        
     </main>
 
+    <section id="pagination">
+        <button id="prev">Prev</button>
+        <button id="next">Next</button>
+    </section>
+
+    <hr><br><br>
     <footer>
         <p>&copy Team 6</p>
     </footer>
