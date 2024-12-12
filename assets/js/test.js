@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const mainContent = document.getElementById("main-content");
   const prev = document.getElementById('prev');
   const next = document.getElementById('next');
+  const shoppingBasket = document.getElementById("shopping_basket");
   let product = [];
   const URL = "https://fakestoreapi.com/products";
 
@@ -26,8 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   getData();
-
+  
   function renderData(data) {
+  
     const html = pagination(data)
       .map(
         (data) => `
@@ -37,13 +39,47 @@ document.addEventListener("DOMContentLoaded", () => {
             <p>${data.description}</p>
             <p>€${data.price}</p>
             <p>${data.rating.rate}/5</p>
-        </article>
+            <button data-id="${data.id}" id="add">Add To Shopping Basket</button>
+        </article><br>
         `
       )
       .join(" ");
 
     mainContent.innerHTML = html;
+
+     // Add event listeners to each "Add To Shopping Basket" button
+     const addButtons = document.querySelectorAll("#add");
+        addButtons.forEach(button => {
+          button.addEventListener("click", (e) => {
+            const itemId = e.target.dataset.id
+            
+            let basket = localStorage.getItem('basket')
+
+            if(!basket) {
+              localStorage.setItem('basket', JSON.stringify([itemId]))
+            } else {
+              const arr = JSON.parse(basket)
+              
+              const isExist = arr.find(item => item === itemId)
+              
+              if(!isExist) {
+                arr.push(itemId)
+                localStorage.setItem('basket', JSON.stringify(arr))
+              }
+
+            }
+          });
+        });
   }
+
+// let basket;
+
+// function saveOrders (){
+//   const savedItem = localStorage.getItem("Item Id");
+
+// };
+
+
 
 
   // FILTER 
