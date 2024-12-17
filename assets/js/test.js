@@ -130,7 +130,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-
   // PAGINATION
 
   // Prev and Next buttons and logic for page numbers 
@@ -140,6 +139,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentPage === 0) {
         prev.style.display = "none";
     } else if (currentPage === (data.length/perPage) -1) {
+        next.style.display = "none";
+    } else if (perPage === (data.length/perPage) > 5) {
         next.style.display = "none";
     } else {
         prev.style.display = "inline-block";
@@ -160,6 +161,6 @@ document.addEventListener("DOMContentLoaded", () => {
     renderData(product);
   });
 
-
+  // && data.length/perPage <= perPage
 
 });
