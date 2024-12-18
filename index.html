@@ -1,46 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="This is a fake store webbpage. Here you can go through different of items, like jewelery, electronics, men's clothing and women's clothing. Sort and filter the items to find them faster. Just add what you want into the shopping cart and push the checkout button to complete the purchase"
+    />
+    <meta
+      name="keywords"
+      content="web development, HTML, CSS, JavaScript, SEO, tutorials, Shop, Webshop, Pc, Parts, Clothes, men, women, woman, man, jewelery, electronic, electronics, sort, filter, clothing, webbshop, store, fake, shopping, cart, shoppingcart"
+    />
+    <meta property="og:title" content="Webbshoppen" />
+    <meta
+      property="og:description"
+      content="This is a fake store webbpage. Here you can go through different of items, like jewelery, electronics, men's clothing and women's clothing. Sort and filter the items to find them faster. Just add what you want into the shopping cart and push the checkout button to complete the purchase"
+    />
+    <meta
+      property="og:url"
+      content="https://makiwebdeveloper.github.io/webbshoppen/"
+    />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webbshopen</title>
-  <link rel="stylesheet" href="./assets/css/index.css">
-  <script src="./assets/js/index.js" defer></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TW54ZB2X9C"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <title>Webbshopen</title>
+    <link rel="stylesheet" href="./assets/css/index.css" />
+    <script src="./assets/js/index.js" defer></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-TW54ZB2X9C"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-  gtag('config', 'G-TW54ZB2X9C');
-</script>
-</head>
+      gtag("config", "G-TW54ZB2X9C");
+    </script>
+  </head>
 
-<body>
-  <header>
-    <h1>Webbshopen</h1>
-    <select class="filter-products">
-      <option value="">all</option>
-      <option value="electronics">electronics</option>
-      <option value="jewelery">jewelery</option>
-      <option value="men's clothing">men's clothing</option>
-      <option value="women's clothing">women's clothing</option>
-    </select>
-    <select class="sort-products">
-      <option value="title-asc">A-Z</option>
-      <option value="title-desc">Z-A</option>
-      <option value="price-asc">Highest price</option>
-      <option value="price-desc">Lowest price</option>
-      <option value="rating-asc">Highest rating</option>
-      <option value="rating-desc">Lowest rating</option>
-    </select>
-  </header>
-  <main id="main">
-  </main>
-  <footer>
-    <p>Footer</p>
-  </footer>
-</body>
-
+  <body>
+    <header>
+      <h1>Webbshopen</h1>
+      <select class="filter-products">
+        <option value="">all</option>
+        <option value="electronics">electronics</option>
+        <option value="jewelery">jewelery</option>
+        <option value="men's clothing">men's clothing</option>
+        <option value="women's clothing">women's clothing</option>
+      </select>
+      <select class="sort-products">
+        <option value="title-asc">A-Z</option>
+        <option value="title-desc">Z-A</option>
+        <option value="price-asc">Highest price</option>
+        <option value="price-desc">Lowest price</option>
+        <option value="rating-asc">Highest rating</option>
+        <option value="rating-desc">Lowest rating</option>
+      </select>
+    </header>
+    <main id="main"></main>
+    <footer>
+      <p>Footer</p>
+    </footer>
+  </body>
 </html>
