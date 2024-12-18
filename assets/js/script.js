@@ -219,6 +219,70 @@ document.addEventListener("DOMContentLoaded", () => {
     return `$${sum.toFixed(2)}`;
   }
 
+  productList.addEventListener("click", (e) => {
+    e.preventDefault();
+    const btn = e.target.closest("button");
+    if (!btn) return;
+
+    const itemId = btn.dataset.id;
+    if (!itemId) {
+      console.error(`ID is invalid or does not exist!`);
+      return;
+    }
+
+    const product = products.find((p) => p.id === parseInt(itemId));
+
+    if (!product) {
+      console.error(`Product ID ${itemId} not found!`);
+      return;
+    }
+
+    const existingInCart = myCart.find((p) => p.ItemId === product.id);
+    let existingQuantity = existingInCart.Quantity;
+    console.log(existingInCart);
+
+    const li = btn.closest("li");
+
+    if (btn.classList.contains("deleteBtn")) {
+      myCart = [
+        ...myCart.filter((item) => item.ItemId !== existingInCart.ItemId),
+      ];
+    } else if (btn.classList.contains("plusBtn")) {
+      // increaseQuantity
+      existingQuantity++;
+      existingInCart.Quantity = existingQuantity;
+
+      const minusBtn = li.querySelector(".minusBtn");
+      minusBtn.removeAttribute("disabled");
+    } else if (btn.classList.contains("minusBtn")) {
+      // decreaseQuantity
+      existingQuantity--;
+      existingInCart.Quantity = existingQuantity;
+
+      if (existingQuantity === 0) {
+        btn.setAttribute("disabled", "true");
+        myCart = [
+          ...myCart.filter((item) => item.ItemId !== existingInCart.ItemId),
+        ];
+      }
+    }
+    saveCartToLocalStorage();
+    showCart();
+  });
+
+  svgLink.addEventListener("click", (e) => {
+    webshopMain.style.display = "none";
+    filter.style.display = "none";
+    sort.style.display = "none";
+    shoppingCart.style.display = "flex";
+    showCart();
+  });
+
+  checkoutBtn.addEventListener("click", (e) => {
+    checkOut.style.display = "flex";
+    shoppingCart.style.display = "none";
+  });
+
   // ALERT
   function showAlert(message, timeout = 3000) {
     const alertBox = document.getElementById("custom-alert");
