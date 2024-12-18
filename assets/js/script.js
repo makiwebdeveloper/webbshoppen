@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const filter = document.getElementById("filter");
-    const sort = document.getElementById("sort");
+  const filter = document.getElementById("filter");
+  const sort = document.getElementById("sort");
   const webshopMain = document.getElementById("webshop-main");
   let products = [];
 
@@ -53,4 +53,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
     webshopMain.innerHTML = html;
   }
+
+  webshopMain.addEventListener("click", (e) => {
+    e.preventDefault();
+    const btn = e.target.closest("button");
+    if (!btn) return;
+
+    const itemId = btn.dataset.id;
+    if (!itemId) {
+      console.error(`ID is invalid or does not exist!`);
+      return;
+    }
+
+    const product = products.find((p) => p.id === parseInt(itemId));
+    if (!product) {
+      console.error(`Product ID ${itemId} not found!`);
+      return;
+    }
+
+    const article = btn.closest("article");
+    const quantityHtml = article.querySelector(".quantity");
+    let quantity = parseInt(quantityHtml.textContent) || 0;
+
+    if (btn.classList.contains("addBtn")) {
+      alert(`Product has been added to your cart!`);
+      
+      addItemToCart(product, quantity);
+    } else if (btn.classList.contains("plusBtn")) {
+      // increaseQuantity
+      quantity++;
+      quantityHtml.textContent = quantity;
+
+      const minusBtn = article.querySelector(".minusBtn");
+      minusBtn.removeAttribute("disabled");
+    } else if (btn.classList.contains("minusBtn")) {
+      // decreaseQuantity
+      if (quantity > 0) {
+        quantity--;
+        quantityHtml.textContent = quantity;
+      }
+      if (quantity === 0) {
+        btn.setAttribute("disabled", "true");
+      }
+    }
+  });
 });
