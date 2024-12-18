@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="./assets/css/index.css">
   <script src="./assets/js/script.js" defer></script>
 </head>
-
 <body>
 
   <header id="webshop-navigation">
@@ -44,7 +43,50 @@
 
   <br><br>
 
+  <div id="custom-alert" class="hidden">
+    Quantity must be higher than 0!
+  </div>
+
   <main id="webshop-main"></main>
+
+  <section id="shopping-cart">
+    <div id="modal">
+      <ul id="product-list"></ul>
+      <div id="modal-bottom">
+        <button id="checkoutBtn">Checkout</button>
+        <span id="total"></span>
+      </div>
+    </div>
+  </section>
+
+  <section id="checkout">
+    <div id="checkoutModal">
+      <!-- <span class="close">&times;</span> -->
+      <a><img src="./assets/svg/close-del.svg" id="close" class="svg"></a>
+      <form id="contact-form">
+        <h2>Please fill out the necessary fields and proceed to Pay button to complete your order.</h2>
+
+        <label for="fName">First name</label>
+        <input class="txt-input" type="text" name="fname" id="fName" placeholder="Name" required>
+
+        <label for="lName">Last name</label>
+        <input class="txt-input" type="text" name="lname" id="lName" placeholder="Surname" required>
+
+        <label for="eMail">E-mail</label>
+        <input class="txt-input" type="email" name="email" id="eMail" placeholder="example@email.com" required>
+
+        <label for="postalCode">Postal code </label>
+        <input class="txt-input" type="number" name="postalCode" id="postalCode" placeholder="123 44" required>
+
+        <label for="information">Optional information</label>
+        <textarea class="txt-input" name="information" id="information"
+          placeholder="Any additional information ..."></textarea>
+
+        <input id="payBtn" type="submit" value="Pay!">
+      </form>
+    </div>
+
+  </section>
 
   <br><br>
 
@@ -53,5 +95,4 @@
   </footer>
 
 </body>
-
 </html>

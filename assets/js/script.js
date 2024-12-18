@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const filter = document.getElementById("filter");
+    const sort = document.getElementById("sort");
   const webshopMain = document.getElementById("webshop-main");
   let products = [];
 
