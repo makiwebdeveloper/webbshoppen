@@ -2,7 +2,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const filter = document.getElementById("filter");
   const sort = document.getElementById("sort");
   const webshopMain = document.getElementById("webshop-main");
+  const shoppingCart = document.getElementById("shopping-cart");
+  const checkOut = document.getElementById("checkout");
+  // const close = document.getElementById('close');
+  const productList = document.getElementById("product-list");
+  const svgLink = document.getElementById("svg-link");
+  const checkoutBtn = document.getElementById("checkoutBtn");
+  const total = document.getElementById("total");
   let products = [];
+  let cart = [];
+  let myCart = JSON.parse(localStorage.getItem("myCart") || "[]");
 
   const URL = "https://fakestoreapi.com/products";
 
@@ -76,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let quantity = parseInt(quantityHtml.textContent) || 0;
 
     if (btn.classList.contains("addBtn")) {
-      alert(`Product has been added to your cart!`);
+        showAlert("Product has been added to your cart!", 3000);
 
       addItemToCart(product, quantity);
     } else if (btn.classList.contains("plusBtn")) {
@@ -97,6 +106,42 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
+
+  // addItemToCart
+  function addItemToCart(product, quantity) {
+    if (quantity <= 0) {
+      showAlert(
+        "Quantity must be higher than 0! Please select at least one product.",
+        3000
+      );
+      return;
+    }
+
+    const existingInCart = myCart.find((p) => p.ItemId === product.id);
+
+    if (existingInCart) {
+      myCart.map((item) =>
+        item.ItemId === existingInCart.ItemId
+          ? { ...item, Quantity: (item.Quantity += quantity) }
+          : item
+      );
+    } else {
+      myCart.push({
+        ItemId: product.id,
+        Title: product.title,
+        Price: product.price,
+        Quantity: quantity,
+      });
+    }
+    saveCartToLocalStorage();
+  }
+
+  // saveCartToLocalStorage
+  function saveCartToLocalStorage() {
+    localStorage.setItem("myCart", JSON.stringify(myCart));
+    console.log(`Cart: ${JSON.stringify(myCart)}`);
+  }
+
 
   // filterProducts
   filter.addEventListener("change", (e) => {
@@ -182,5 +227,5 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   emailjs.sendForm();
-  
+
 });
