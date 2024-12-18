@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (btn.classList.contains("addBtn")) {
       alert(`Product has been added to your cart!`);
-      
+
       addItemToCart(product, quantity);
     } else if (btn.classList.contains("plusBtn")) {
       // increaseQuantity
@@ -97,4 +97,47 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
+
+  // filterProducts
+  filter.addEventListener("change", (e) => {
+    e.preventDefault();
+    const filtering = e.target.value;
+    const filteredProducts = filterProducts(filtering);
+    showProducts(filteredProducts);
+  });
+
+  function filterProducts(category) {
+    if (category === "all") {
+      return products;
+    } else {
+      return products.filter((product) => product.category === category);
+    }
+  }
+
+  // sortProducts
+  sort.addEventListener("change", (e) => {
+    e.preventDefault();
+    const sorting = e.target.value;
+    const sortedProducts = sortProducts(sorting);
+    showProducts(sortedProducts);
+  });
+
+  function sortProducts(sort) {
+    switch (sort) {
+      case "A-Z":
+        return products.sort((a, b) => a.title.localeCompare(b.title));
+      case "Z-A":
+        return products.sort((a, b) => b.title.localeCompare(a.title));
+      case "Price Low > High":
+        return products.sort((a, b) => a.price - b.price);
+      case "Price High > Low":
+        return products.sort((a, b) => b.price - a.price);
+      case "Rate High > Low":
+        return products.sort((a, b) => b.rating.rate - a.rating.rate);
+      case "Rate Low > High":
+        return products.sort((a, b) => a.rating.rate - b.rating.rate);
+    }
+  }
+
+  
 });
