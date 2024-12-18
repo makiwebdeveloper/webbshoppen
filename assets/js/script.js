@@ -139,5 +139,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  
+  // ALERT 
+  function showAlert(message, timeout = 3000) {
+    const alertBox = document.getElementById("custom-alert");
+
+    alertBox.textContent = message;
+    alertBox.classList.remove("hidden", "hide");
+    alertBox.classList.add("show");
+
+    setTimeout(() => {
+      alertBox.classList.remove("show");
+      alertBox.classList.add("hide");
+
+      setTimeout(() => {
+        alertBox.classList.add("hidden");
+      }, 500);
+    }, timeout);
+  };
+
 });
