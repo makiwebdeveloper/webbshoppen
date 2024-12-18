@@ -38,6 +38,40 @@ body {
 }
 
 
+/* Custom Alert */
+#custom-alert {
+    position: fixed;
+    width: 80%;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: lightblue;
+    color: #000;
+    padding: 20px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    z-index: 1000;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    opacity: 0;
+    /* Start hidden */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    /* Smooth transitions */
+}
+
+#custom-alert.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    /* Fully visible */
+}
+
+#custom-alert.hide {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+    /* Slide out */
+}
+
+
 /* MAIN */
 #webshop-main {
     display: grid;
