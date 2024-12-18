@@ -6,34 +6,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Webbshopen</title>
   <link rel="stylesheet" href="./assets/css/index.css">
-  <script src="./assets/js/index.js" defer></script>
+  <script src="./assets/js/script.js" defer></script>
 </head>
 
 <body>
-  <header>
-    <h1>Webbshopen</h1>
-    <div id="shopping_basket"></div>
-    <select class="filter-products">
-      <option value="">all</option>
-      <option value="electronics">electronics</option>
-      <option value="jewelery">jewelery</option>
-      <option value="men's clothing">men's clothing</option>
-      <option value="women's clothing">women's clothing</option>
-    </select>
-    <select class="sort-products">
-      <option value="title-asc">A-Z</option>
-      <option value="title-desc">Z-A</option>
-      <option value="price-asc">Highest price</option>
-      <option value="price-desc">Lowest price</option>
-      <option value="rating-asc">Highest rating</option>
-      <option value="rating-desc">Lowest rating</option>
-    </select>
+
+  <header id="webshop-navigation">
+
+    <div id="header">
+      <a href="/">
+        <h1>myWebbShop</h1>
+      </a>
+      <button id="svg-link" href="./shopping-cart.html" target="_blank" rel="noopener noreferrer">
+        <img class="cart-svg" src="./assets/svg/shopping-cart.svg" alt="Shopping Cart">
+      </button>
+    </div>
+
+    <div id="filter-sort">
+      <select name="filter" id="filter">
+        <option value="all">All products</option>
+        <option value="women's clothing">Women's clothing</option>
+        <option value="men's clothing">Men's clothing</option>
+        <option value="electronics">Electronics</option>
+        <option value="jewelery">Jewelery</option>
+      </select>
+
+      <select name="sort" id="sort">
+        <option value="A-Z">A-Z</option>
+        <option value="Z-A">Z-A</option>
+        <option value="Price Low > High">Price Low > High</option>
+        <option value="Price High > Low">Price High > Low</option>
+        <option value="Rate High > Low">Rate High > Low</option>
+        <option value="Rate Low > High">Rate Low > High</option>
+      </select>
+    </div>
   </header>
-  <main id="main">
-  </main>
-  <footer>
-    <p>Footer</p>
+
+  <br><br>
+
+  <main id="webshop-main"></main>
+
+  <br><br>
+
+  <footer id="webshop-footer">
+    <p>Team Numero 6 &copy;</p>
   </footer>
+
 </body>
 
 </html>
