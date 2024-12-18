@@ -82,6 +82,7 @@ body {
 
 article {
     border: 1px solid #000;
+    background-color: #fff;
     width: 85%;
     margin: 1rem;
     padding: 1rem;
@@ -94,6 +95,7 @@ article>* {
 .productImg {
     width: 100%;
     height: 20rem;
+    object-fit: contain;
 }
 
 .svg {
