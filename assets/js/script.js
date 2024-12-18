@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let quantity = parseInt(quantityHtml.textContent) || 0;
 
     if (btn.classList.contains("addBtn")) {
-        showAlert("Product has been added to your cart!", 3000);
+      showAlert("Product has been added to your cart!", 3000);
 
       addItemToCart(product, quantity);
     } else if (btn.classList.contains("plusBtn")) {
@@ -142,7 +142,6 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(`Cart: ${JSON.stringify(myCart)}`);
   }
 
-
   // filterProducts
   filter.addEventListener("change", (e) => {
     e.preventDefault();
@@ -182,6 +181,42 @@ document.addEventListener("DOMContentLoaded", () => {
       case "Rate Low > High":
         return products.sort((a, b) => a.rating.rate - b.rating.rate);
     }
+  }
+
+  function showCart(data) {
+    productList.innerHTML = myCart
+      .map(
+        (data) => `
+      <li> 
+        <p>${data.Title}</p>
+        <p>€ ${data.Price * data.Quantity}</p>
+        <div class="buttons">
+                <button data-id="${
+                  data.ItemId
+                }" class="deleteBtn"><img src="./assets/svg/delete.svg" class="svg"></button>
+                <button data-id="${
+                  data.ItemId
+                }" class="plusBtn"><img src="./assets/svg/plus-solid.svg" class="svg"></button>
+                <span class="quantity">${data.Quantity}</span>
+                <button data-id="${
+                  data.ItemId
+                }" class="minusBtn"><img src="./assets/svg/minus-solid.svg" class="svg"></button>
+        <div>
+      </li>`
+      )
+      .join("");
+
+    total.innerHTML = sumTotal(myCart);
+  }
+
+  function sumTotal(data) {
+    const sum = data
+      .map((product) => product.Price * product.Quantity)
+      .reduce((acc, sum) => {
+        return acc + sum;
+      }, 0);
+
+    return `$${sum.toFixed(2)}`;
   }
 
   // ALERT
@@ -227,5 +262,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   emailjs.sendForm();
-
 });
