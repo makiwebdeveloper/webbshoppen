@@ -79,12 +79,79 @@ article>* {
 }
 
 /* shopping-cart */
+#shopping-cart {
+    display: none;
+    align-items: center;
+}
 
+#modal {
+    width: 100vh;
+    height: auto;
+}
 
+#product-list {
+    padding: 0 3rem;
+}
+
+#product-list li {
+    list-style: none;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #333;
+    text-align: center;
+}
+
+li>p {
+    line-height: 1.5rem;
+}
+
+#modal-bottom {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#checkoutBtn {
+    padding: 0.8rem;
+}
 
 /* checkout */
+#checkout {
+    display: none;
+    margin: 0 auto;
+    text-align: center;
+}
 
+#checkoutModal {
+    border: 1px solid black;
+    line-height: 2.5rem;
+    padding: 2.5rem;
+}
 
+#close {
+    position: absolute;
+    right: 1rem;
+    top: 10rem;
+}
+
+label {
+    text-align: start;
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.txt-input {
+    padding: 0.8rem;
+}
+
+#payBtn {
+    width: 50%;
+    margin: 0 auto;
+    padding: 0.5rem;
+    margin-top: 2rem;
+}
 
 /* FOOTER */
 
@@ -96,16 +163,39 @@ article>* {
 
 /* Media Queries */
 
-@media screen and (min-width: 480px) {}
+@media screen and (min-width: 480px) {
+    #webshop-main {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(90px, 1fr));
+        width: 100%;
+        margin: 0 auto;
+    }
+}
 
+@media screen and (min-width: 768px) {
+    #webshop-main {
+        grid-template-columns: repeat(3, minmax(100px, 1fr));
+    }
+}
 
-@media screen and (min-width: 768px) {}
-
-
-@media screen and (min-width: 992px) {}
-
+@media screen and (min-width: 992px) {
+    #webshop-main {
+        grid-template-columns: repeat(4, minmax(100px, 1fr));
+    }
+}
 
 @media screen and (min-width: 1200px) {}
 
+@media screen and (min-width: 1400px) {
+    #webshop-main {
+        grid-template-columns: repeat(5, minmax(100px, 1fr));
+    }
+}
 
-@media screen and (min-width: 1400px) {}
+/* IDEAS */
+
+/* 1. Number of products in cart reflect as a small number on cart like notifications */
+/* 2. When the form is submitted get a random 6 digit number as an order ID */
+/* 3. Reset the quantity number once the product is added to cart to 0 */
+/*  */
+/*  */
