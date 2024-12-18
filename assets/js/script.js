@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // ALERT 
+  // ALERT
   function showAlert(message, timeout = 3000) {
     const alertBox = document.getElementById("custom-alert");
 
@@ -155,6 +155,32 @@ document.addEventListener("DOMContentLoaded", () => {
         alertBox.classList.add("hidden");
       }, 500);
     }, timeout);
-  };
+  }
 
+  // SUBMIT THE CONTACT FORM / SENDING EMAIL
+  emailjs.init("CUTjA1ptYGkoIJ1On");
+
+  const contactForm = document.getElementById("contact-form");
+  contactForm.addEventListener("submit", (e) => {
+    e.preventDefault(); // Prevent the default form submission
+
+    // Define your EmailJS service and template IDs
+    const serviceID = "webbshoppen";
+    const templateID = "webbshoppen";
+
+    // Use emailjs.sendForm
+    emailjs
+      .sendForm(serviceID, templateID, contactForm)
+      .then(() => {
+        showAlert(`Your message was successful!`);
+        contactForm.reset(); // Reset form
+      })
+      .catch((error) => {
+        showAlert(`Message failed. Please try again.`);
+        console.log(`EmailJS error: ${error}`);
+      });
+  });
+
+  emailjs.sendForm();
+  
 });
