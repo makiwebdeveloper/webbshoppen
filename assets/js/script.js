@@ -4,13 +4,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const webshopMain = document.getElementById("webshop-main");
   const shoppingCart = document.getElementById("shopping-cart");
   const checkOut = document.getElementById("checkout");
-  // const close = document.getElementById('close');
+  const svgClose = document.getElementById("svg-close");
   const productList = document.getElementById("product-list");
-  const svgLink = document.getElementById("svg-link");
+  const svgCart = document.getElementById("svg-cart");
+  const checkoutModal = document.getElementById('checkoutModal');
+  const contactForm = document.getElementById("contact-form");
+  const payBtn = document.getElementById('payBtn');
   const checkoutBtn = document.getElementById("checkoutBtn");
   const total = document.getElementById("total");
   let products = [];
-  let cart = [];
   let myCart = JSON.parse(localStorage.getItem("myCart") || "[]");
 
   const URL = "https://fakestoreapi.com/products";
@@ -270,17 +272,39 @@ document.addEventListener("DOMContentLoaded", () => {
     showCart();
   });
 
-  svgLink.addEventListener("click", (e) => {
+  svgCart.addEventListener("click", (e) => {
     webshopMain.style.display = "none";
     filter.style.display = "none";
     sort.style.display = "none";
     shoppingCart.style.display = "flex";
+
     showCart();
   });
 
   checkoutBtn.addEventListener("click", (e) => {
     checkOut.style.display = "flex";
     shoppingCart.style.display = "none";
+  });
+
+  svgClose.addEventListener("click", (e) => {
+    webshopMain.style.display = "grid";
+    filter.style.display = "inline-flex";
+    sort.style.display = "inline-flex";
+    shoppingCart.style.display = "none";
+    checkoutModal.style.display = "none";
+  });
+
+  payBtn.addEventListener("click", (e) => {
+    webshopMain.style.display = "grid";
+    filter.style.display = "inline-flex";
+    sort.style.display = "inline-flex";
+    shoppingCart.style.display = "none";
+    checkoutModal.style.display = "none";
+
+    localStorage.clear();
+    // localStorage.removeItem("myCart");
+    myCart.splice(0, myCart.length);
+    productList.innerHTML = "";
   });
 
   // ALERT
@@ -304,7 +328,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // SUBMIT THE CONTACT FORM / SENDING EMAIL
   emailjs.init("CUTjA1ptYGkoIJ1On");
 
-  const contactForm = document.getElementById("contact-form");
   contactForm.addEventListener("submit", (e) => {
     e.preventDefault(); // Prevent the default form submission
 
@@ -316,11 +339,11 @@ document.addEventListener("DOMContentLoaded", () => {
     emailjs
       .sendForm(serviceID, templateID, contactForm)
       .then(() => {
-        showAlert(`Your message was successful!`);
+        showAlert(`Your message was successful!`, 1000);
         contactForm.reset(); // Reset form
       })
       .catch((error) => {
-        showAlert(`Message failed. Please try again.`);
+        showAlert(`Message failed. Please try again.`, 1000);
         console.log(`EmailJS error: ${error}`);
       });
   });
