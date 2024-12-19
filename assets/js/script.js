@@ -118,7 +118,12 @@ document.addEventListener("DOMContentLoaded", () => {
       );
       return;
     }
-
+    gtag('event', 'button_click', {
+      'event_category': 'AddingItems',
+      'event_label': 'Adding items too cart',
+      'value': 1,
+      'debug_mode': true
+    });
     const existingInCart = myCart.find((p) => p.ItemId === product.id);
 
     if (existingInCart) {
@@ -284,6 +289,13 @@ document.addEventListener("DOMContentLoaded", () => {
   checkoutBtn.addEventListener("click", (e) => {
     checkOut.style.display = "flex";
     shoppingCart.style.display = "none";
+
+    gtag('event', 'button_click', {
+      'event_category': 'Checkout',
+      'event_label': 'continue to delivery details',
+      'value': 1,
+      'debug_mode': true
+    });
   });
 
   svgClose.addEventListener("click", (e) => {
@@ -294,18 +306,6 @@ document.addEventListener("DOMContentLoaded", () => {
     checkoutModal.style.display = "none";
   });
 
-  payBtn.addEventListener("click", (e) => {
-    webshopMain.style.display = "grid";
-    filter.style.display = "inline-flex";
-    sort.style.display = "inline-flex";
-    shoppingCart.style.display = "none";
-    checkoutModal.style.display = "none";
-
-    localStorage.clear();
-    // localStorage.removeItem("myCart");
-    myCart.splice(0, myCart.length);
-    productList.innerHTML = "";
-  });
 
   // ALERT
   function showAlert(message, timeout = 3000) {
@@ -326,14 +326,32 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // SUBMIT THE CONTACT FORM / SENDING EMAIL
-  emailjs.init("CUTjA1ptYGkoIJ1On");
+  emailjs.init("PY3kCigJwMXEFfa-I");
 
   contactForm.addEventListener("submit", (e) => {
     e.preventDefault(); // Prevent the default form submission
 
+    webshopMain.style.display = "grid";
+    filter.style.display = "inline-flex";
+    sort.style.display = "inline-flex";
+    shoppingCart.style.display = "none";
+    checkoutModal.style.display = "none";
+
+    gtag('event', 'button_click', {
+      'event_category': 'PayButton',
+      'event_label': 'Adds payment details ',
+      'value': 1,
+      'debug_mode': true
+    });
+
+    localStorage.clear();
+    // localStorage.removeItem("myCart");
+    myCart.splice(0, myCart.length);
+    productList.innerHTML = "";
+
     // Define your EmailJS service and template IDs
-    const serviceID = "webbshoppen";
-    const templateID = "webbshoppen";
+    const serviceID = "webbshoppen_6";
+    const templateID = "webbshoppen_6";
 
     // Use emailjs.sendForm
     emailjs
