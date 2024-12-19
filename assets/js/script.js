@@ -46,10 +46,10 @@ document.addEventListener("DOMContentLoaded", () => {
         (data) => `
         <article>
             <img class="productImg" src="${data.image}">
-            <h5>${data.category}</h5>
-            <h5>${data.title}</h5>
-            <h5>€ ${data.price}</h5>
-            <h5><img src="./assets/svg/star.svg"class="svg"> ${data.rating.rate}</h5>
+            <div class="productInfo">
+                <h5>${data.title}</h5>
+                <span>€ ${data.price}</span> - <span><img src="./assets/svg/star.svg"class="svg"> ${data.rating.rate}/5</span>
+            </div>
             <div class="buttons">
                 <button data-id="${data.id}" class="addBtn">Add to Cart</button>
                 <button data-id="${data.id}" class="plusBtn"><img src="./assets/svg/plus-solid.svg" class="svg"></button>
@@ -90,6 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
       
       addItemToCart(product, quantity);
       quantityHtml.textContent = 0;
+      cartNotification.style.display = "block";
 
     } else if (btn.classList.contains("plusBtn")) {
       // increaseQuantity
@@ -289,6 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (myCart.length === 0) {
         webshopMain.style.display = "grid";
+        cartNotification.style.display = "none";
       }
     }
     saveCartToLocalStorage();
