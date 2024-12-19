@@ -3,17 +3,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const sort = document.getElementById("sort");
   const webshopMain = document.getElementById("webshop-main");
   const svgCart = document.getElementById("svg-cart");
-  const cartNotification = document.getElementById('cart-notification');
+  const cartNotification = document.getElementById("cart-notification");
 
   const shoppingCart = document.getElementById("shopping-cart");
   const checkOut = document.getElementById("checkout");
   const svgClose = document.getElementById("svg-close");
   const productList = document.getElementById("product-list");
-  
+
   const checkoutModal = document.getElementById("checkoutModal");
   const contactForm = document.getElementById("contact-form");
   const checkoutBtn = document.getElementById("checkoutBtn");
-  
+
   const total = document.getElementById("total");
   let products = [];
   let myCart = JSON.parse(localStorage.getItem("myCart") || "[]");
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span>€ ${data.price}</span> - <span><img src="./assets/svg/star.svg"class="svg"> ${data.rating.rate}/5</span>
             </div>
             <div class="buttons">
-                <button data-id="${data.id}" class="addBtn">Add to Cart</button>
+                <button data-id="${data.id}" class="addBtn">Add</button>
                 <button data-id="${data.id}" class="plusBtn"><img src="./assets/svg/plus-solid.svg" class="svg"></button>
                 <span class="quantity">0</span>
                 <button data-id="${data.id}" class="minusBtn"><img src="./assets/svg/minus-solid.svg" class="svg"></button>
@@ -87,11 +87,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (btn.classList.contains("addBtn")) {
       showAlert("Product has been added to your cart!", 3000);
-      
+
       addItemToCart(product, quantity);
       quantityHtml.textContent = 0;
       cartNotification.style.display = "block";
-
     } else if (btn.classList.contains("plusBtn")) {
       // increaseQuantity
       quantity++;
@@ -267,6 +266,7 @@ document.addEventListener("DOMContentLoaded", () => {
       myCart = [
         ...myCart.filter((item) => item.ItemId !== existingInCart.ItemId),
       ];
+      cartNotification.innerHTML = cartQuantity(myCart);
     } else if (btn.classList.contains("plusBtn")) {
       // increaseQuantity
       existingQuantity++;
@@ -280,7 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
       existingQuantity--;
       existingInCart.Quantity = existingQuantity;
       cartNotification.innerHTML = cartQuantity(myCart);
-      
+
       if (existingQuantity === 0) {
         btn.setAttribute("disabled", "true");
         myCart = [
@@ -295,7 +295,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     saveCartToLocalStorage();
     showCart();
-    
   });
 
   svgCart.addEventListener("click", (e) => {
