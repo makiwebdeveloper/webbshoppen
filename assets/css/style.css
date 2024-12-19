@@ -33,6 +33,14 @@ body {
     padding: 0.5rem;
 }
 
+#cart-notification {
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    right: 0.2rem;
+    top: 0.7rem;
+}
+
 #filter-sort {
     display: inline-flex;
     gap: 1.5rem;
@@ -60,6 +68,7 @@ body {
     /* Start hidden */
     transition: opacity 0.5s ease, transform 0.5s ease;
     /* Smooth transitions */
+    pointer-events: none;
 }
 
 #custom-alert.show {
@@ -101,9 +110,6 @@ article>* {
     object-fit: contain;
 }
 
-.svg {
-    width: 1rem;
-}
 
 .buttons {
     display: flex;
@@ -166,7 +172,7 @@ li>p {
     padding: 2.5rem;
 }
 
-#close {
+#svg-close {
     position: absolute;
     right: 1rem;
     top: 10rem;
