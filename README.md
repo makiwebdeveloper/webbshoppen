@@ -50,12 +50,12 @@ This event register how many clicks that are made when changing quantity on prod
 Open
 
 ## Disadvantages
-Limited interaction for users.
-No commercials.
+- Limited interaction for users.
+- No commercials.
 
 ## Future improvements
-Add more products and categories.
-Add a search bar.
-More modern design & better color contrast.
-develop a better user experience.
-Add commercials.
+- Add more products and categories.
+- Add a search bar.
+- More modern design & better color contrast.
+- develop a better user experience.
+- Add commercials.
