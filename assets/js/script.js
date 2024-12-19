@@ -2,15 +2,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const filter = document.getElementById("filter");
   const sort = document.getElementById("sort");
   const webshopMain = document.getElementById("webshop-main");
+  const svgCart = document.getElementById("svg-cart");
+  const cartNotification = document.getElementById('cart-notification');
+
   const shoppingCart = document.getElementById("shopping-cart");
   const checkOut = document.getElementById("checkout");
   const svgClose = document.getElementById("svg-close");
   const productList = document.getElementById("product-list");
-  const svgCart = document.getElementById("svg-cart");
-  const checkoutModal = document.getElementById('checkoutModal');
+  
+  const checkoutModal = document.getElementById("checkoutModal");
   const contactForm = document.getElementById("contact-form");
-  const payBtn = document.getElementById('payBtn');
   const checkoutBtn = document.getElementById("checkoutBtn");
+  
   const total = document.getElementById("total");
   let products = [];
   let myCart = JSON.parse(localStorage.getItem("myCart") || "[]");
@@ -88,8 +91,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (btn.classList.contains("addBtn")) {
       showAlert("Product has been added to your cart!", 3000);
-
+      
       addItemToCart(product, quantity);
+      quantityHtml.textContent = 0;
+
     } else if (btn.classList.contains("plusBtn")) {
       // increaseQuantity
       quantity++;
@@ -118,11 +123,11 @@ document.addEventListener("DOMContentLoaded", () => {
       );
       return;
     }
-    gtag('event', 'button_click', {
-      'event_category': 'AddingItems',
-      'event_label': 'Adding items too cart',
-      'value': 1,
-      'debug_mode': true
+    gtag("event", "button_click", {
+      event_category: "AddingItems",
+      event_label: "Adding items too cart",
+      value: 1,
+      debug_mode: true,
     });
     const existingInCart = myCart.find((p) => p.ItemId === product.id);
 
@@ -140,13 +145,14 @@ document.addEventListener("DOMContentLoaded", () => {
         Quantity: quantity,
       });
     }
+    cartNotification.innerHTML = cartQuantity(myCart);
     saveCartToLocalStorage();
   }
 
   // saveCartToLocalStorage
   function saveCartToLocalStorage() {
     localStorage.setItem("myCart", JSON.stringify(myCart));
-    console.log(`Cart: ${JSON.stringify(myCart)}`);
+    // console.log(`Cart: ${JSON.stringify(myCart)}`);
   }
 
   // filterProducts
@@ -226,6 +232,27 @@ document.addEventListener("DOMContentLoaded", () => {
     return `$${sum.toFixed(2)}`;
   }
 
+  function cartQuantity(data) {
+    const sum = data
+      .map((product) => product.Quantity)
+      .reduce((acc, sum) => {
+        return acc + sum;
+      }, 0);
+
+    return `${sum}`;
+  }
+
+//   function cartQuantity(data) {
+//     const sum = data
+//       .map((product) => myCart.length * product.Quantity)
+//       .reduce((acc, sum) => {
+//         return acc + sum;
+//       }, 0);
+
+//     return `${sum}`;
+//   }
+
+
   productList.addEventListener("click", (e) => {
     e.preventDefault();
     const btn = e.target.closest("button");
@@ -258,6 +285,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // increaseQuantity
       existingQuantity++;
       existingInCart.Quantity = existingQuantity;
+      cartNotification.innerHTML = cartQuantity(myCart);
 
       const minusBtn = li.querySelector(".minusBtn");
       minusBtn.removeAttribute("disabled");
@@ -265,6 +293,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // decreaseQuantity
       existingQuantity--;
       existingInCart.Quantity = existingQuantity;
+      cartNotification.innerHTML = cartQuantity(myCart);
+      
 
       if (existingQuantity === 0) {
         btn.setAttribute("disabled", "true");
@@ -278,34 +308,40 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   svgCart.addEventListener("click", (e) => {
-    webshopMain.style.display = "none";
-    filter.style.display = "none";
-    sort.style.display = "none";
-    shoppingCart.style.display = "flex";
+    e.preventDefault();
+    if (myCart.length === 0) {
+      shoppingCart.style.display = "none";
+    } else {
+      webshopMain.style.display = "none";
+      filter.style.display = "none";
+      sort.style.display = "none";
+      shoppingCart.style.display = "flex";
 
-    showCart();
+      showCart();
+    }
   });
 
   checkoutBtn.addEventListener("click", (e) => {
-    checkOut.style.display = "flex";
+    checkOut.style.display = "inline-flex";
+    checkoutModal.style.display = "grid";
     shoppingCart.style.display = "none";
 
-    gtag('event', 'button_click', {
-      'event_category': 'Checkout',
-      'event_label': 'continue to delivery details',
-      'value': 1,
-      'debug_mode': true
+    gtag("event", "button_click", {
+      event_category: "Checkout",
+      event_label: "continue to delivery details",
+      value: 1,
+      debug_mode: true,
     });
   });
 
   svgClose.addEventListener("click", (e) => {
+    e.preventDefault();
     webshopMain.style.display = "grid";
     filter.style.display = "inline-flex";
     sort.style.display = "inline-flex";
     shoppingCart.style.display = "none";
     checkoutModal.style.display = "none";
   });
-
 
   // ALERT
   function showAlert(message, timeout = 3000) {
@@ -337,11 +373,11 @@ document.addEventListener("DOMContentLoaded", () => {
     shoppingCart.style.display = "none";
     checkoutModal.style.display = "none";
 
-    gtag('event', 'button_click', {
-      'event_category': 'PayButton',
-      'event_label': 'Adds payment details ',
-      'value': 1,
-      'debug_mode': true
+    gtag("event", "button_click", {
+      event_category: "PayButton",
+      event_label: "Adds payment details ",
+      value: 1,
+      debug_mode: true,
     });
 
     localStorage.clear();

@@ -13,7 +13,10 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 1rem;
+   
+    background-color: #CD9768;
+    padding: 2rem;
+   
 }
 
 #header {
@@ -28,6 +31,14 @@ body {
 
 .cart-svg {
     padding: 0.5rem;
+}
+
+#cart-notification {
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    right: 0.2rem;
+    top: 0.7rem;
 }
 
 #filter-sort {
@@ -57,6 +68,7 @@ body {
     /* Start hidden */
     transition: opacity 0.5s ease, transform 0.5s ease;
     /* Smooth transitions */
+    pointer-events: none;
 }
 
 #custom-alert.show {
@@ -98,9 +110,6 @@ article>* {
     object-fit: contain;
 }
 
-.svg {
-    width: 1rem;
-}
 
 .buttons {
     display: flex;
@@ -163,7 +172,7 @@ li>p {
     padding: 2.5rem;
 }
 
-#close {
+#svg-close {
     position: absolute;
     right: 1rem;
     top: 10rem;
@@ -194,6 +203,7 @@ label {
 #webshop-footer {
     text-align: center;
     padding: 2rem 0;
+    background-color: #CD9768;
 }
 
 
