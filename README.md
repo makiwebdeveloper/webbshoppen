@@ -32,7 +32,7 @@ This is a interactive webbshop that gives a user possibility to purchase product
 
 **GTAG**
 
-![gtagData](assets/images/webshoppen.png)
+![gtagData](assets/images/ganalysis.png)
 
 We've added 3 different custom events that tracks how many clicks are made on following buttons:
 
