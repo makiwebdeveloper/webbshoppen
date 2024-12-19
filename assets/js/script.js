@@ -118,7 +118,12 @@ document.addEventListener("DOMContentLoaded", () => {
       );
       return;
     }
-
+    gtag('event', 'button_click', {
+      'event_category': 'AddingItems',
+      'event_label': 'Adding items too cart',
+      'value': 1,
+      'debug_mode': true
+    });
     const existingInCart = myCart.find((p) => p.ItemId === product.id);
 
     if (existingInCart) {
@@ -284,6 +289,13 @@ document.addEventListener("DOMContentLoaded", () => {
   checkoutBtn.addEventListener("click", (e) => {
     checkOut.style.display = "flex";
     shoppingCart.style.display = "none";
+
+    gtag('event', 'button_click', {
+      'event_category': 'Checkout',
+      'event_label': 'continue to delivery details',
+      'value': 1,
+      'debug_mode': true
+    });
   });
 
   svgClose.addEventListener("click", (e) => {
@@ -300,6 +312,13 @@ document.addEventListener("DOMContentLoaded", () => {
     sort.style.display = "inline-flex";
     shoppingCart.style.display = "none";
     checkoutModal.style.display = "none";
+
+    gtag('event', 'button_click', {
+      'event_category': 'PayButton',
+      'event_label': 'Adds payment details ',
+      'value': 1,
+      'debug_mode': true
+    });
 
     localStorage.clear();
     // localStorage.removeItem("myCart");
