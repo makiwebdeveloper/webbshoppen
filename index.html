@@ -36,6 +36,7 @@
       </a>
       <button id="svg-cart" href="./shopping-cart.html" target="_blank" rel="noopener noreferrer">
         <img class="cart-svg" src="./assets/svg/shopping-cart.svg" alt="Shopping Cart">
+        <span id="cart-notification"></span>
       </button>
     </div>
 
@@ -61,9 +62,7 @@
 
   <br><br>
 
-  <div id="custom-alert" class="hidden">
-    Quantity must be higher than 0!
-  </div>
+  <div id="custom-alert" class="hidden"></div>
 
   <main id="webshop-main"></main>
 
@@ -71,7 +70,8 @@
     <div id="modal">
       <ul id="product-list"></ul>
       <div id="modal-bottom">
-        <button id="checkoutBtn">Checkout</button>
+        <button class="btn" id="checkoutBtn">Checkout</button>
+        <button class="btn"><a href="/">Back to Shop</a></button>
         <span id="total"></span>
       </div>
     </div>
@@ -80,7 +80,7 @@
   <section id="checkout">
     <div id="checkoutModal">
       <!-- <span class="close">&times;</span> -->
-      <button><img src="./assets/svg/close-del.svg" id="svg-close" class="svg"></button>
+      <button id="svg-close"><img src="./assets/svg/close-del.svg" class="svg btn"></button>
       <form id="contact-form">
         <h2>Please fill out the necessary fields and proceed to Pay button to complete your order.</h2>
 
