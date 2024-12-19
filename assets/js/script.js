@@ -302,9 +302,15 @@ document.addEventListener("DOMContentLoaded", () => {
           ...myCart.filter((item) => item.ItemId !== existingInCart.ItemId),
         ];
       }
+
+      if (myCart.length === 0) {
+        webshopMain.style.display = "grid";
+      }
+      
     }
     saveCartToLocalStorage();
     showCart();
+    
   });
 
   svgCart.addEventListener("click", (e) => {
@@ -372,6 +378,7 @@ document.addEventListener("DOMContentLoaded", () => {
     sort.style.display = "inline-flex";
     shoppingCart.style.display = "none";
     checkoutModal.style.display = "none";
+    cartNotification.style.display = "none";
 
     gtag("event", "button_click", {
       event_category: "PayButton",
