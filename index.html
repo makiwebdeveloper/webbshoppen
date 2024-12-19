@@ -1,39 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <script src="./assets/js/script.js" defer></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script src="./assets/js/script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-  <!-- EmailJS -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <title>Webbshopen</title>
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <title>Webbshopen</title>
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TW54ZB2X9C"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-TW54ZB2X9C"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-  gtag('config', 'G-TW54ZB2X9C');
-</script>
-</head>
+      gtag("config", "G-TW54ZB2X9C");
+    </script>
+  </head>
 
-<body>
+  <body>
+    <header id="webshop-navigation">
+      <div id="header">
+        <a href="/">
+          <h1>WebShop</h1>
+        </a>
 
-  <header id="webshop-navigation">
-
-    <div id="header">
-      <a href="/">
-        <h1>WebShop</h1>
-      </a>
+        <button
+          id="svg-cart"
+          href="./shopping-cart.html"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            class="cart-svg"
+            src="./assets/svg/shopping-cart.svg"
+            alt="Shopping Cart"
+          />
+          <span id="cart-notification"></span>
+        </button>
+      </div>
+      <div class="test"></div>
+      <div class="test2"></div>
+      <div class="test3"></div>
       <div id="filter-sort">
         <select name="filter" id="filter">
           <option value="all">All products</option>
@@ -42,7 +62,7 @@
           <option value="electronics">Electronics</option>
           <option value="jewelery">Jewelery</option>
         </select>
-  
+
         <select name="sort" id="sort">
           <option value="A-Z">A-Z</option>
           <option value="Z-A">Z-A</option>
@@ -52,67 +72,94 @@
           <option value="Rate Low > High">Rate Low > High</option>
         </select>
       </div>
-      <button id="svg-cart" href="./shopping-cart.html" target="_blank" rel="noopener noreferrer">
-        <img class="cart-svg" src="./assets/svg/shopping-cart.svg" alt="Shopping Cart">
-        <span id="cart-notification"></span>
-      </button>
-    </div>
+    </header>
 
-   
-  </header>
+    <br /><br />
 
-  <br><br>
+    <div id="custom-alert" class="hidden"></div>
 
-  <div id="custom-alert" class="hidden"></div>
+    <main id="webshop-main"></main>
 
-  <main id="webshop-main"></main>
-
-  <section id="shopping-cart">
-    <div id="modal">
-      <ul id="product-list"></ul>
-      <div id="modal-bottom">
-        <button class="btn" id="checkoutBtn">Checkout</button>
-        <button class="btn"><a href="/">Back to Shop</a></button>
-        <span id="total"></span>
+    <section id="shopping-cart">
+      <div id="modal">
+        <ul id="product-list"></ul>
+        <div id="modal-bottom">
+          <button class="btn" id="checkoutBtn">Checkout</button>
+          <button class="btn"><a href="/">Back to Shop</a></button>
+          <span id="total"></span>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="checkout">
-    <div id="checkoutModal">
-      <!-- <span class="close">&times;</span> -->
-      <button id="svg-close"><img src="./assets/svg/close-del.svg" class="svg btn"></button>
-      <form id="contact-form">
-        <h2>Please fill out the necessary fields and proceed to Pay button to complete your order.</h2>
+    <section id="checkout">
+      <div id="checkoutModal">
+        <!-- <span class="close">&times;</span> -->
+        <button id="svg-close">
+          <img src="./assets/svg/close-del.svg" class="svg btn" />
+        </button>
+        <form id="contact-form">
+          <h2>
+            Please fill out the necessary fields and proceed to Pay button to
+            complete your order.
+          </h2>
 
-        <label for="fName">First name</label>
-        <input class="txt-input" type="text" name="fname" id="fName" placeholder="Name" required>
+          <label for="fName">First name</label>
+          <input
+            class="txt-input"
+            type="text"
+            name="fname"
+            id="fName"
+            placeholder="Name"
+            required
+          />
 
-        <label for="lName">Last name</label>
-        <input class="txt-input" type="text" name="lname" id="lName" placeholder="Surname" required>
+          <label for="lName">Last name</label>
+          <input
+            class="txt-input"
+            type="text"
+            name="lname"
+            id="lName"
+            placeholder="Surname"
+            required
+          />
 
-        <label for="eMail">E-mail</label>
-        <input class="txt-input" type="email" name="email" id="email" placeholder="example@email.com" required>
+          <label for="eMail">E-mail</label>
+          <input
+            class="txt-input"
+            type="email"
+            name="email"
+            id="email"
+            placeholder="example@email.com"
+            required
+          />
 
-        <label for="postalCode">Postal code </label>
-        <input class="txt-input" type="number" name="postalCode" id="postalCode" placeholder="123 44" required>
+          <label for="postalCode">Postal code </label>
+          <input
+            class="txt-input"
+            type="number"
+            name="postalCode"
+            id="postalCode"
+            placeholder="123 44"
+            required
+          />
 
-        <label for="information">Optional information</label>
-        <textarea class="txt-input" name="information" id="information"
-          placeholder="Any additional information ..."></textarea>
+          <label for="information">Optional information</label>
+          <textarea
+            class="txt-input"
+            name="information"
+            id="information"
+            placeholder="Any additional information ..."
+          ></textarea>
 
-        <input id="payBtn" type="submit" value="Pay!">
-      </form>
-    </div>
+          <input id="payBtn" type="submit" value="Pay!" />
+        </form>
+      </div>
+    </section>
 
-  </section>
+    <br /><br />
 
-  <br><br>
-
-  <footer id="webshop-footer">
-    <p>Team Numero 6 &copy;</p>
-  </footer>
-
-</body>
-
+    <footer id="webshop-footer">
+      <p>Team Numero 6 &copy;</p>
+    </footer>
+  </body>
 </html>
