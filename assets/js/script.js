@@ -306,27 +306,6 @@ document.addEventListener("DOMContentLoaded", () => {
     checkoutModal.style.display = "none";
   });
 
-  payBtn.addEventListener("submit", (e) => {
-    e.preventDefault();
-    // showAlert(`Your message was successful!`, 1000);
-    webshopMain.style.display = "grid";
-    filter.style.display = "inline-flex";
-    sort.style.display = "inline-flex";
-    shoppingCart.style.display = "none";
-    checkoutModal.style.display = "none";
-
-    gtag('event', 'button_click', {
-      'event_category': 'PayButton',
-      'event_label': 'Adds payment details ',
-      'value': 1,
-      'debug_mode': true
-    });
-
-    localStorage.clear();
-    // localStorage.removeItem("myCart");
-    myCart.splice(0, myCart.length);
-    productList.innerHTML = "";
-  });
 
   // ALERT
   function showAlert(message, timeout = 3000) {
@@ -351,6 +330,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
   contactForm.addEventListener("submit", (e) => {
     e.preventDefault(); // Prevent the default form submission
+
+    webshopMain.style.display = "grid";
+    filter.style.display = "inline-flex";
+    sort.style.display = "inline-flex";
+    shoppingCart.style.display = "none";
+    checkoutModal.style.display = "none";
+
+    gtag('event', 'button_click', {
+      'event_category': 'PayButton',
+      'event_label': 'Adds payment details ',
+      'value': 1,
+      'debug_mode': true
+    });
+
+    localStorage.clear();
+    // localStorage.removeItem("myCart");
+    myCart.splice(0, myCart.length);
+    productList.innerHTML = "";
 
     // Define your EmailJS service and template IDs
     const serviceID = "webbshoppen_6";
