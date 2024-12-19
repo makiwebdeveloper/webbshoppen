@@ -307,6 +307,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   payBtn.addEventListener("submit", (e) => {
+    e.preventDefault();
     // showAlert(`Your message was successful!`, 1000);
     webshopMain.style.display = "grid";
     filter.style.display = "inline-flex";
