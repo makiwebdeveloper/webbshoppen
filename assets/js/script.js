@@ -306,7 +306,8 @@ document.addEventListener("DOMContentLoaded", () => {
     checkoutModal.style.display = "none";
   });
 
-  payBtn.addEventListener("click", (e) => {
+  payBtn.addEventListener("submit", (e) => {
+    // showAlert(`Your message was successful!`, 1000);
     webshopMain.style.display = "grid";
     filter.style.display = "inline-flex";
     sort.style.display = "inline-flex";
@@ -345,14 +346,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // SUBMIT THE CONTACT FORM / SENDING EMAIL
-  emailjs.init("CUTjA1ptYGkoIJ1On");
+  emailjs.init("PY3kCigJwMXEFfa-I");
 
   contactForm.addEventListener("submit", (e) => {
     e.preventDefault(); // Prevent the default form submission
 
     // Define your EmailJS service and template IDs
-    const serviceID = "webbshoppen";
-    const templateID = "webbshoppen";
+    const serviceID = "webbshoppen_6";
+    const templateID = "webbshoppen_6";
 
     // Use emailjs.sendForm
     emailjs
