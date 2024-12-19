@@ -31,9 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       products = [...data];
 
-      //   console.log(data);
-      //   console.log(products);
-
       showProducts(products);
     } catch (error) {
       console.error(`Error: ${error}`);
@@ -59,8 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span class="quantity">0</span>
                 <button data-id="${data.id}" class="minusBtn"><img src="./assets/svg/minus-solid.svg" class="svg"></button>
             <div>
-        </article>    
-        
+        </article>
         `
       )
       .join("");
@@ -242,17 +238,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return `${sum}`;
   }
 
-//   function cartQuantity(data) {
-//     const sum = data
-//       .map((product) => myCart.length * product.Quantity)
-//       .reduce((acc, sum) => {
-//         return acc + sum;
-//       }, 0);
-
-//     return `${sum}`;
-//   }
-
-
   productList.addEventListener("click", (e) => {
     e.preventDefault();
     const btn = e.target.closest("button");
@@ -295,7 +280,6 @@ document.addEventListener("DOMContentLoaded", () => {
       existingInCart.Quantity = existingQuantity;
       cartNotification.innerHTML = cartQuantity(myCart);
       
-
       if (existingQuantity === 0) {
         btn.setAttribute("disabled", "true");
         myCart = [
@@ -306,7 +290,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (myCart.length === 0) {
         webshopMain.style.display = "grid";
       }
-      
     }
     saveCartToLocalStorage();
     showCart();
@@ -371,7 +354,7 @@ document.addEventListener("DOMContentLoaded", () => {
   emailjs.init("PY3kCigJwMXEFfa-I");
 
   contactForm.addEventListener("submit", (e) => {
-    e.preventDefault(); // Prevent the default form submission
+    e.preventDefault();
 
     webshopMain.style.display = "grid";
     filter.style.display = "inline-flex";
@@ -388,7 +371,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     localStorage.clear();
-    // localStorage.removeItem("myCart");
     myCart.splice(0, myCart.length);
     productList.innerHTML = "";
 
@@ -405,9 +387,7 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch((error) => {
         showAlert(`Message failed. Please try again.`, 1000);
-        console.log(`EmailJS error: ${error}`);
+        console.error(`EmailJS error: ${error}`);
       });
   });
-
-  emailjs.sendForm();
 });
