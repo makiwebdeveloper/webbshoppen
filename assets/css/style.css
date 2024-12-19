@@ -13,7 +13,10 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 1rem;
+   
+    background-color: #CD9768;
+    padding: 2rem;
+   
 }
 
 #header {
@@ -194,6 +197,7 @@ label {
 #webshop-footer {
     text-align: center;
     padding: 2rem 0;
+    background-color: #CD9768;
 }
 
 
