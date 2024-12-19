@@ -1,36 +1,61 @@
-# webbshoppen
+# Webbshoppen
 
-1. Fetch från API (https://fakestoreapi.com/)
-2. Render produkterna med map() function
-3. Filter produkterna med filter() function
-4. Sortera produkterna med sort() function
-5. Reduce function för summera total summa
-6. Save produkterna till LocaleStorage
-7. Clear LocaleStorage items
-8. Prev and Next buttons and logic for page numbers
+![Webbshoppen](assets/images/webshoppen.png)
 
-**Reflektera i teamet och sammanfatta på 300-500 ord i Readme.md. Vilka möjligheter finns det med händelsespårning? Finns det begränsningar?**
+## Grupp 6
+- Antonio
+- Aleksandar
+- Niklas
+- Illia
+- Baker
 
-Vi har skapat en webbshop där vi har fetchat 20 olika produkter från https://fakestoreapi.com/products genom att använda en async functiion. Vidare har vi, för att  visa produkterna på hemsidan, implementerat html kod genom JS med att använda map and join. 
+The link to the Shop can be found deployed on [GitHub Pages](https://makiwebdeveloper.github.io/webbshoppen/).
 
-Gällande UX kommer besökare till en landing page där alla produkter finns tillgänliga. Därefter kan besökare välja att sortera produkter utifrån produkt kategori som mens clothing, womans clothing, electronic mm. Besökare kan även sortera produkterna utifrån pris (low-high / high-low), rating (low-high / high-low) och namn (A-Z / Z-A). Besökare kan köpa produkt genom en add to cart knapp som fungerar med minst ett i antal. Vi har valt att använda sort, filter och push till ovan interatktion samt en modal för att visa meddelanden på resultat av eventen. Val av produkter sparas tillfälligt i localstorage och resetar med en pay knapp som innehåller .reset.
+The link to our Github repository's [Github Repo](https://github.com/makiwebdeveloper/webbshoppen).
 
-Formen för kundinformation vid checkout använde vi emailjs.
+## Overview
+This is a interactive webbshop that gives a user possibility to purchase products of different categories. Furthermore a user, to find relevant products, can choose to sort products by category and simultaneously sort by name, rating and price high to low or vice versa. Once finished shopping, user can go to the shopping cart to complete with customer information to finalize the purchase order.
+
+## Technologies Used
+- HTML: For structuring the website.
+- CSS: For styling and responsive design.
+    - Media Queries: For ensuring that the shop works on different devices.
+- Javascript: For dynamic and interactive behaviour.
+    - Using Async function to fetch API.
+    - Render products with map() function,
+    - Filter products using Filter() function,
+    - Sort products using sort() function,
+    - Reduce function to sum total sum
+    - Localstorage to save products to shopping cart,
+    - Clear localstorage using reset.
+    - using emailjs for the customer/delivery form.
 
 **GTAG**
 
-Bild för gtag data:
-https://imgur.com/a/kC8IhQ7 alternativt i ./assets/images
+![gtagData](assets/images/webshoppen.png)
 
-Vi har lagt till 3st olika "custom events" som spårar hur många knapptryck som görs på de valda knapparna. De vi har är:
+We've added 3 different custom events that tracks how many clicks are made on following buttons:
 
 - PayButton:
-  Denna data registrerar knapptryck Pay-button, som är det sista knapptryck man gör för att slutföra sin beställning.
-  Med andra ord, kan vi se hur många beställningar som görs.
+This event register clicks on Pay-button, this can help us to track how many finalize their shopping orders.
 
 - Checkout:
-  Här kan vi se hur många det är som trycker på knappen "checkout", så man kommer till sidan där man fyller i sina leveransdetaljer.
-  Med även denna funktion kan det jämföras med om hur många som tryckt på knappen checkout, till att faktiskt slutföra sin beställning.
+This event register clicks on Checkout button, the checkbutton leads to a form for user to insert information for delivery. This will help us understand to track how many users that checksout but do not finalize their order. We can use this data to identify possible issues and develop into better user experience.
 
 - AddingItems:
-  Denna "custom event" räknar antalet knapptryck som görs, när man ändrar sin quantity/antal produkter som man vill ha. Lägga till eller reducera sitt antal.
+This event register how many clicks that are made when changing quantity on products that potential customer wants.
+
+## Possibilities and limitations with event tracker
+
+Open
+
+## Disadvantages
+Limited interaction for users.
+No commercials.
+
+## Future improvements
+Add more products and categories.
+Add a search bar.
+More modern design & better color contrast.
+develop a better user experience.
+Add commercials.
