@@ -1,6 +1,6 @@
 # Webbshoppen
 
-![Webbshoppen](assets/images/webshoppen.png)
+![Webbshoppen](assets/images/webbshoppen.png)
 
 ## Grupp 6
 - Antonio
