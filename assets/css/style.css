@@ -9,6 +9,17 @@ body {
 }
 
 /* HEADER */
+h1{
+    color: bisque;
+    font-size: 36pt;
+    text-shadow:  black 0 5px 10px;
+    font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+
+}
+
 #webshop-navigation {
     display: flex;
     flex-direction: column;
@@ -196,7 +207,7 @@ label {
 
 #webshop-footer {
     text-align: center;
-    padding: 2rem 0;
+    padding: 2rem ;
     background-color: #CD9768;
 }
 
