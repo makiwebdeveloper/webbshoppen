@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <h5>${data.title}</h5>
                 <span>€ ${data.price}</span> - <span><img src="./assets/svg/star.svg"class="svg"> ${data.rating.rate}/5</span>
             </div>
-            <div class="buttons">
+            <div class="buttons card-buttons">
                 <button data-id="${data.id}" class="addBtn">Add</button>
                 <button data-id="${data.id}" class="plusBtn"><img src="./assets/svg/plus-solid.svg" class="svg"></button>
                 <span class="quantity">0</span>
@@ -65,10 +65,10 @@ document.addEventListener("DOMContentLoaded", () => {
     webshopMain.innerHTML = html;
 
     if (myCart.length > 0) {
-    cartNotification.style.display = "block";
-    cartNotification.innerHTML = cartQuantity(myCart);
+      cartNotification.style.display = "block";
+      cartNotification.innerHTML = cartQuantity(myCart);
     } else {
-      cartNotification.style.display = "none"; 
+      cartNotification.style.display = "none";
     }
   }
 

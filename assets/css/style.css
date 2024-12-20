@@ -331,15 +331,14 @@ label {
 
   #svg-close {
     right: 2rem;
-}
-
+  }
 }
 
 @media screen and (min-width: 768px) {
   #webshop-main {
     grid-template-columns: repeat(3, minmax(100px, 1fr));
   }
-  
+
   #svg-close {
     position: absolute;
     right: 6.5rem;
@@ -350,8 +349,11 @@ label {
     max-width: 90%;
     margin: 0 auto;
     margin-bottom: 2rem;
-}
+  }
 
+  .card-buttons {
+    margin-left: 0.5rem;
+  }
 }
 
 @media screen and (min-width: 992px) {
@@ -360,8 +362,8 @@ label {
   }
 
   #shopping-cart {
-      max-width: 60%;
-      margin: 0 auto;
+    max-width: 60%;
+    margin: 0 auto;
   }
 
   .buttons {
@@ -369,18 +371,24 @@ label {
     justify-content: center;
   }
 
+  .card-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-left: 0.5rem;
+  }
+
   #checkoutModal {
     max-width: 80%;
     margin: 0 auto;
     margin-bottom: 2rem;
-}
+  }
 
-#svg-close {
-  position: absolute;
-  right: 10rem;
-  top: 10.5rem;
-}
-
+  #svg-close {
+    position: absolute;
+    right: 10rem;
+    top: 10.5rem;
+  }
 }
 
 @media screen and (min-width: 1200px) {
