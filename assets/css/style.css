@@ -82,6 +82,23 @@ h1 {
 }
 
 #filter-sort {
+}
+
+.cart-svg {
+  padding: 0.5rem;
+}
+
+#cart-notification {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  right: 1.5rem;
+  top: 2rem;
+  border: 1px solid red;
+  background-color: lightcoral;
+}
+
+#filter-sort {
   gap: 1rem;
   display: flex;
   /* flex-direction: column;
