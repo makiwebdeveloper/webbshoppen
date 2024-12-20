@@ -47,7 +47,10 @@ This event register how many clicks that are made when changing quantity on prod
 
 ## Possibilities and limitations with event tracker
 
-Open
+Event Tracking in Javascript gives us the possibility to handle user interaction and dynamics of website content. We can handle a wide range of events from mouse, keyboard, forms, windows, media, that includes clicks, doubleclick, mousemove, keypress, submit scrolling, play, stop etc. and more. This gives us a great understanding with posibility to develop our website to a more interactive and dynamic website.
+
+While event tracking gives us a better understanding and possibility to develop user interaction, event tracking also comes with limitations such as performance issue. This can happen if we use to many eventhandlers, especially using many dom-element.
+
 
 ## Disadvantages
 - Limited interaction for users.
